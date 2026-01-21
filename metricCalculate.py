@@ -86,7 +86,7 @@ def get_metricTensorcomponentTT(r, t):
             return derivative
 
     #get the final metric tensor
-    t_rev = t - R/c
+    t_rev = t - r/c
     metricTensorComponent = [[mp.mpf('0') for _ in range(3)] for _ in range(3)]
     for i in range(3):
         for j in range(3):
@@ -111,10 +111,10 @@ def get_metricTensorcomponentTT(r, t):
 
 #calculate the average respond for monochromatic wave
 #define the orientation of the detector
-theta_arm = pi / 4
+theta_arm = pi / 2
 phi_arm = pi / 4    #the orientation of one arm of the detector (rad)
-theta_det = mp.mpf('1.3')
-phi_det = mp.mpf('1.4')   #the orientation of the vector from the centor of the source to the center of the detector
+theta_det = mp.mpf('1.57079')
+phi_det = mp.mpf('0.79')   #the orientation of the vector from the centor of the source to the center of the detector
 a_i, a_j, a_k = sin(theta_arm) * cos(phi_arm), sin(theta_arm) * sin(phi_arm), cos(theta_arm)
 n_i, n_j, n_k = sin(theta_det) * cos(phi_det), sin(theta_det) * sin(phi_det), cos(theta_det)
 L = mp.mpf('1000')    #length of the arm of the detector (meter)
