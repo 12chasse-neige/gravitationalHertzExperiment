@@ -126,7 +126,7 @@ def calculate_deltaT(t):
         return mp.sqrt((R * n_i + x * a_i)**2 + (R * n_j + x * a_j)**2 + (R * n_k + x * a_k)**2)
     for i in range(3):
         for j in range(3):
-            deltaT += integrate.quad(lambda x: mp.mpf('1') / (2*c) * a_i * a_j * get_metricTensorcomponentTT(distance(x), t + x / c)[i][j], mp.mpf('0'), L)[0]
+            deltaT += mp.quad(lambda x: mp.mpf('1') / (2*c) * a_i * a_j * get_metricTensorcomponentTT(distance(x), t + x / c)[i][j], [mp.mpf('0'), L])
     return deltaT
 
 def calculate_deltaTPrime(t):
@@ -135,7 +135,7 @@ def calculate_deltaTPrime(t):
         return mp.sqrt((R * n_i + x * a_i)**2 + (R * n_j + x * a_j)**2 + (R * n_k + x * a_k)**2)
     for i in range(3):
         for j in range(3):
-            deltaTPrime += integrate.quad(lambda x: mp.mpf('1') / (2*c) * a_i * a_j * get_metricTensorcomponentTT(distance(L - x), t + (L - x) / c)[i][j], mp.mpf('0'), L)[0]
+            deltaTPrime += mp.quad(lambda x: mp.mpf('1') / (2*c) * a_i * a_j * get_metricTensorcomponentTT(distance(L - x), t + (L - x) / c)[i][j], [mp.mpf('0'), L])
     return deltaTPrime
 
 t = float(input("current time:"))
